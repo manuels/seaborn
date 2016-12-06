@@ -720,7 +720,7 @@ class FacetGrid(Grid):
             plot_args = [v for k, v in plot_data.iteritems()]
 
             # Some matplotlib functions don't handle pandas objects correctly
-            if func.__module__ is not None:
+            if hasattr(func, '__module__') and func.__module__ is not None:
                 if func.__module__.startswith("matplotlib"):
                     plot_args = [v.values for v in plot_args]
 
